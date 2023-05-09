@@ -1,42 +1,42 @@
-#include<stdio.h>
+#include <stdio.h>
 #include<stdlib.h>
-#include<locale.h>
+#define MAX_TAM 10
 
-//atividade do dia 08/03/2023
-//ENUNCIADO:
+typedef struct sLista{
+    char elem[MAX_TAM];
+    int ultimo;
+}Lista;
+//Inicializar a lista
+void inicializarLista(Lista *lista){
+    lista->ultimo = -1;
+}
 /*
-	1 - FAÇA UM PROGRAMA QUE PREENCHA UM VETOR DE INTEIROS DE TAMANHO 10 PEDINDO
-	VALORES AO USUÁRIO. EM SEGUIDA CALCULE E SALVE NUM SEGUNDO VETOR O QUADRADO
-	DE CADA ELEMENTO DO PRIMEIRO VETOR. POR FIM IMPRIMA OS DOIS VALORES.
-*/
+Lista *lista = (Lista*)malloc(sizeof(Lista));
+inicializarLista(lista);*/
 
-int main(){
-	
-	setlocale(LC_ALL,"Portuguese");
-	
-	//DECLARAÇÃO
-	int i, vet1[10], vet2[10];	
-	printf("\n");
-	
-	//ENTRADA DE VALORES
-	for(i = 0; i< 10; i ++){
-		printf(" Digite o valor da posição %d: ", i);
-		scanf("%d", &vet1[i]);		
-	}
-	
-	//PROCESSAMENTO DA OPERAÇÃO
-	for(i = 0; i < 10; i ++)		
-		vet2[i] = vet1[i] * vet1[i];
-		printf("\n");
-		
-	//RESULTADOS DA OPERAÇÃO
-	printf(" Vetor1:");
-	for(i = 0; i < 10; i ++)
-		printf("%2d ", vet1[i]);
-	printf("\n");
-	printf(" Vetor2:");
-	for(i = 0; i < 10; i ++)
-		printf("%2d ", vet2[i]);
-	printf("\n");	
-	return 0;
+//Verificar se a lista está cheia
+int listaCheia(Lista * lista){
+    if(lista->ultimo == (MAX_TAM -1)){
+        return 1;
+    }
+    return 0;
+}
+//Verificar se a lista está vazia
+
+int listaVazia(Lista *lista){
+    if(lista->ultimo == -1){
+        return 1;
+    }
+    return 0;
+}
+//inserir um elemento no fim da lista
+int inserirFim(Lista *lista, char elemento){
+    //verifica se alista está cheia
+    if(listaCheia(lista)){
+        printf("ERRO: lista cheia!\n");
+        return 0;
+    }
+    lista->elem[lista->ultimo +1] = elemento;
+    lista ->ultimo++;;
+    return 1;
 }
