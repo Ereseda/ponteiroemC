@@ -13,22 +13,22 @@ typedef struct sCell{
 	struct sCell *next;
 }CELULA;
 
-//void listaVazia();
-//void inseriPessoaNoFim();
-//void inserirInicio();
-//void imprimirLista();
-//void removerInicio();
-//void removerFim();
-//void pesquisarMatricula();
-//void removerMatr();
-
+void listaVazia();
+void inseriPessoaNoFim();
+void inserirInicio();
+void imprimirLista();
+void removerInicio();
+void removerFim();
+void pesquisarMatricula();
+void removerMatr();
+/*
 void inserirPessoaNoInicio();
 void imprimirListaPessoas();
 void removerPessoasInicio();
 void removerPessoasFim();
 void pesquisarMatricula();
 void removerMatriculas();
-
+*/
 void menu(){
 	setlocale(LC_ALL,"Portuguese");
     printf("==================== MENU ====================\n");
@@ -60,35 +60,35 @@ int main(){
             printf(" \n Até logo... Obrigado por usar nosso sistema!\n");
             break;
         case 1:
-            //listaVazia();
+            listaVazia();
             printf("\n Colocar a função verificar se vazia.\n");
             break;
         case 2:
-            //inserirFim()
+            inserirFim();
             printf("\n Inserir Pessoa no Fim.\n");
             break;
         case 3:
-            //inserirInicio();
+            inserirInicio();
             printf("\n Inserir Pessoa no Inicio.\n");
             break;
         case 4:
-            //imprimirLista();
+            imprimirLista();
             printf("\n Imprimir lista de Pessoas.\n");
             break;
         case 5:
-            //removerInicio();
+            removerInicio();
             printf("\n remover Pessoas no início.\n");
             break;
         case 6:
-            //removerFim();
+            removerFim();
             printf("\n Remover Pessoa no fim.\n");
             break;
         case 7:
-            //pesquisarMatricula();
+            pesquisarMatr();
             printf("\n Pesquisar por matricula.\n");
             break;
         case 8:
-            //removerMatr();
+            removerMatr();
             printf("\nRemover por matricula.\n");
             break;
         default:
@@ -101,23 +101,35 @@ int main(){
 
    return 0;
 }
-/*
-//Verificar se a lista está vazia
 
+
+CELULA *criarCelula(){
+    CELULA* nova=(CELULA*)malloc(sizeof(CELULA));
+    return nova;
+}
+
+//Verificar se a lista está vazia
+/*
 int listaVazia(CELULA **lista){
     if((*lista)==NULL){
         if((*lista)==NULL){
+            //printf("\nLista está vazia!");
             return 1;
         }
+       // printf("\nLista não está vazia!");
         return 0;
-    }
+    }/*
+        if(listaVazia(&lista)==1)
+            printf("\nEstá vazia!");
+        else
+            printf("\nNã0 está vazia!");
 }
-*/
-/*Inserir pessoa no fim da lista
 
-int inserirFim(CELULA **lista, int elemento){
+//Inserir pessoa no fim da lista
+
+int inserirFim(CELULA **lista, PESSOA elemento){
     CELULA *novaCelula;//Armazena end. nova
-    CELULA *AUXILIAR; //Utilizado p/ percorrer
+    CELULA *auxiliar; //Utilizado p/ percorrer
 
     //Aloca o espaço na mem. para novaCelula
     novaCelula = criarCelula();
@@ -143,8 +155,8 @@ int inserirFim(CELULA **lista, int elemento){
     return 1;
 }
 
-*/
 /*
+
 //Inserir no início da lista
 int inserirInicio(CELULA **lista, int elemento){
     CELULA *novaCelula = criarCelula();
@@ -162,10 +174,10 @@ int inserirInicio(CELULA **lista, int elemento){
     novaCelula->next = (*lista);
     (*lista)=novaCelula;
     return 1;
-}
-*/
-/*
+}*/
+
 //Imprimir uma lista
+/*
 void imprimirLista(CELULA **lista){
     CELULA *auxiliar = (*lista);
     if(listaVazia(lista)){
@@ -178,20 +190,19 @@ void imprimirLista(CELULA **lista){
         }
         printf("\n");
     }
-}
-*/
+}*/
 /*
     void imprimirElemento(PESSOA elemento){
         printf("\nMatricula: %d \tNome: %s", elemento.matricula,elemento.nome);
     }
+
 */
 
-/*
    // Remover Início
-   PESSOA removerInicio(CELULA **lista){
+//   PESSOA removerInicio(CELULA **lista){
     //Ponteiro para armazenar o end. da
     //célula a ser excluída.
-    CELULA *removida;
+ //   CELULA *removida;
 
     //Elemento vazio
     PESSOA removido;
@@ -215,8 +226,8 @@ void imprimirLista(CELULA **lista){
     return removido;
    }
 
-*/
-/*
+
+
 //Remover no final
 PESSOA removerFim(CELULA **lista){
     //Armazenar o endereço do nó a ser removido
@@ -246,10 +257,10 @@ PESSOA removerFim(CELULA **lista){
         free(removida);
         return removido;
 }
-*/
+
 /*
 //Pesquisar pela matricula
-CELULA *pesquisarMatricula(CELULA **lista, int mat){
+CELULA *pesquisarMatr(CELULA **lista, int mat){
     CELULA *auxiliar;
 
     if(listaVazia(lista)){
@@ -267,9 +278,9 @@ CELULA *pesquisarMatricula(CELULA **lista, int mat){
         return NULL; //Caso em que não há o elemento procurado
     }
 }
-*/
 
 /*
+
 //Remover pela matricula
 PESSOA removerMatr(CELULA **lista, int mat){
     CELULA *removida;
@@ -306,4 +317,4 @@ PESSOA removerMatr(CELULA **lista, int mat){
 
     return pRemover;
 }
-*/
+
